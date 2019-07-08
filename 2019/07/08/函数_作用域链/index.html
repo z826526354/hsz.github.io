@@ -16,19 +16,19 @@
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数_作用域链">
-<meta property="og:url" content="https://hsiliver.space/myblog/2019/07/08/函数_作用域链/index.html">
+<meta property="og:url" content="https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/index.html">
 <meta property="og:site_name" content="hsiliver个人博客">
 <meta property="og:description" content="函数作用域链 函数函数声明高内聚， 低耦合 命名规范：小驼峰式命名  123451. 命名函数表达式function theFirstFun() &amp;#123;    console.log(&apos;abc&apos;);&amp;#125;theFirstFun.name // theFirstFun  ​          表达式类函数，忽略函数名, 此时 abc 被忽略  1234562. 匿名函数表达式 ————">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://hsiliver.space/myblog/myblog/2019/07/08/函数_作用域链/a.scope.PNG">
-<meta property="og:image" content="https://hsiliver.space/myblog/myblog/2019/07/08/函数_作用域链/doing.PNG">
-<meta property="og:image" content="https://hsiliver.space/myblog/myblog/2019/07/08/函数_作用域链/b_defined.PNG">
-<meta property="og:image" content="https://hsiliver.space/myblog/myblog/2019/07/08/函数_作用域链/b_doing.PNG">
+<meta property="og:image" content="https://z826526354.github.io/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/a.scope.PNG">
+<meta property="og:image" content="https://z826526354.github.io/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/doing.PNG">
+<meta property="og:image" content="https://z826526354.github.io/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/b_defined.PNG">
+<meta property="og:image" content="https://z826526354.github.io/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/b_doing.PNG">
 <meta property="og:updated_time" content="2019-07-08T14:10:29.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数_作用域链">
 <meta name="twitter:description" content="函数作用域链 函数函数声明高内聚， 低耦合 命名规范：小驼峰式命名  123451. 命名函数表达式function theFirstFun() &amp;#123;    console.log(&apos;abc&apos;);&amp;#125;theFirstFun.name // theFirstFun  ​          表达式类函数，忽略函数名, 此时 abc 被忽略  1234562. 匿名函数表达式 ————">
-<meta name="twitter:image" content="https://hsiliver.space/myblog/myblog/2019/07/08/函数_作用域链/a.scope.PNG">
+<meta name="twitter:image" content="https://z826526354.github.io/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/a.scope.PNG">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
@@ -37,7 +37,7 @@
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="hsiliver个人博客">
-  <meta name="msapplication-starturl" content="https://hsiliver.space/myblog/myblog/2019/07/08/函数_作用域链/">
+  <meta name="msapplication-starturl" content="https://z826526354.github.io/hsz.github.io/myblog/myblog/2019/07/08/函数_作用域链/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="hsiliver个人博客">
@@ -50,7 +50,7 @@
   
 
   
-    <link rel="canonical" href="https://hsiliver.space/myblog/myblog/2019/07/08/函数_作用域链/">
+    <link rel="canonical" href="https://z826526354.github.io/hsz.github.io/myblog/myblog/2019/07/08/函数_作用域链/">
   
 
   <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
@@ -188,7 +188,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-9.png" style="max-height: 240px;">
+      <img src="/images/random/material-11.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">函数_作用域链</div>
@@ -204,7 +204,7 @@
             
             <li class="mdui-menu-item" disabled>
               
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACaklEQVR42u3aMXLEIAwFUN//0kmbIst+SZg4O8/VjuMAjwI0kq6vj34uPDw8PDw8PDy8h/Gu+PlloB/v11/mc83XhoeHh3eG9+aoLfJ6W5PPu/4GDw8P7yTv1bLWv18d6Gt2stzq2vDw8PD+C+/lNMuNyN/g4eHhfQZvnTgohL9BMgIPDw/vybxqmJskatff5KH5oVwLHh4eXszLi0znfx+t7+Hh4eEFvHJL0/giyVO6G5qu8PDw8G7g7Sr/J00AyV8n68HDw8M7w6sW76tpiF6wnqQtmiE1Hh4e3iZeUtaqLmhXK0B5o/Hw8PBu5u0No3uphzzBEY2Gh4eHd5w3KT6tL4BJgrgwDh4eHt7NvPyfe0mK6mZVN3GUjMDDw8Mb8PJkQZ4yWKdi82tpFFLj4eHh3cDLh0im3JVcSDZlW2cEHh4e3qYKUR5MzxeXb2J0FeHh4eEd4VWn6WGqSYcNTVd4eHh4N/CqxadeS8G86LWhpwwPDw9vE28S/laP/t6m5KPh4eHhneFVGwWqR3YvvK5eS3h4eHgneb1SU/I+H6eaEGlmqfHw8PC28uYhcvWqmATrb7YMDw8P7ziv+lSL/fk3vf/Fw8PDO8+7Bk/viK/O/uaCwcPDw7uZ1zuUq+8n7adJoI+Hh4d3klc99JOjPC+h9UZodkbg4eHhbeX12ggKh3WrEaGZJsbDw8M7yOsd0NUi2d4xCxcDHh4e3gN4eUNAtZGrF4Lj4eHhPZ8XlaMG3+TtWXh4eHh/xZsXvfKl5KmHo2lcPDw8vBsKYOs3+VFeHbMQ3OPh4eHdzPu8Bw8PDw8PDw8P7wHPN2g2NQCSOU2eAAAAAElFTkSuQmCC">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2ElEQVR42u3aUW6DMBAE0Nz/0u0BKmDGditqP76iBsI+kLryjj9fRx4fbGxsbGxsbGxs7FeyP/Hx86rk889rr+5+9e39VUXN2NjY2FuzH/71x2Vd3Th/HFfXXv1aXjM2Njb2Cey26Pvz75vffGvMa8bGxsbGHjsnweSLE2xsbGzstex2SdAOqvIlEDY2NjZ2O6Bpy81DgmI89PezNGxsbOzXs/PQ9D2f/zTfxsbGxn4xuz3WhgfzYXNROTY2Nvam7LboduiTLE7aOKGtExsbG/sE9sz4fllZ5eO4vyM2Njb2aeyx4X4bAOeLkwKTvwxsbGzsrdn5oGftciWPeNuhEjY2NvY57HxJMFPizKac+3qWBb3Y2NjY/5bdLgzapcjMpp82Nnj4OzY2Nvam7GR8kw+PxgLdtvm1W4KwsbGx92bnQ6U8sh0LD/LhUfKSsLGxsc9kj43mk3YyHxvfD5Wi38fGxsY+mJ03sDYqXtXeovtiY2Njb81OAtTkYc20xrohzQe92NjY2BuxxzbozGzEGWuKU1dhY2Njb81uB/0zEe/Yt8n5D68BGxsb+wB2uxUmX7TkAW0+PKpfHjY2Nvam7ORoN1CuCmvbcx7qwcbGxt6aPdYY2iY3M2xqo4uogWFjY2Nvwc5j1HxpMdbk2gaWD7ywsbGxT2AnP5q0sVUPZaahFrM0bGxs7I3YbQAwtikzv+rXh0rY2NjYm7LHxknt9pp2q00+isLGxsbGzkvPW1obCcy00ocFDzY2Nvam7LHtO/kIKR/ijw2MihaIjY2NvSl7bFtMHtPOFJ0vaZJgAxsbG3tvdj7QaRvP2L3aRx89YmxsbOwD2O1mx6TcmWi2HWMN7jnFxsbGPpK9KhKIAtpF4TE2NjY2dh7QjjFWRQjY2NjYJ7PXDoPyCCF5QHmb/JV4ABsbG/v17JlNjWNF5E10ZlMmNjY29gnscw5sbGxsbGxsbGzs1xzfRxqRAzIMOOgAAAAASUVORK5CYII=">
               
             </li>
           </ul>
@@ -213,25 +213,25 @@
           <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
           <ul class="mdui-menu" id="share_menu">
             <li class="mdui-menu-item">
-              <a href="http://service.weibo.com/share/share.php?appkey=&title=函数_作用域链&url=https://hsiliver.space/myblog/2019/07/08/函数_作用域链/&pic=https://hsiliver.space/myblog/myblog/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">Share to Weibo</a>
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=函数_作用域链&url=https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/&pic=https://z826526354.github.io/hsz.github.io/myblog/myblog/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">Share to Weibo</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://twitter.com/intent/tweet?text=函数_作用域链&url=https://hsiliver.space/myblog/2019/07/08/函数_作用域链/&via=hsiliver" target="_blank" class="mdui-ripple">Share to Twitter</a>
+              <a href="https://twitter.com/intent/tweet?text=函数_作用域链&url=https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/&via=hsiliver" target="_blank" class="mdui-ripple">Share to Twitter</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://hsiliver.space/myblog/2019/07/08/函数_作用域链/" target="_blank" class="mdui-ripple">Share to Facebook</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/" target="_blank" class="mdui-ripple">Share to Facebook</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://plus.google.com/share?url=https://hsiliver.space/myblog/2019/07/08/函数_作用域链/" target="_blank" class="mdui-ripple">Share to Google+</a>
+              <a href="https://plus.google.com/share?url=https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/" target="_blank" class="mdui-ripple">Share to Google+</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://hsiliver.space/myblog/2019/07/08/函数_作用域链/&title=函数_作用域链" target="_blank" class="mdui-ripple">Share to LinkedIn</a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/&title=函数_作用域链" target="_blank" class="mdui-ripple">Share to LinkedIn</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=函数_作用域链&summary=web前端 js基础 个人博客&pics=https://hsiliver.space/myblog/myblog/images/favicon.png&url=https://hsiliver.space/myblog/2019/07/08/函数_作用域链/" target="_blank" class="mdui-ripple">Share to QQ</a>
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=函数_作用域链&summary=web前端 js基础 个人博客&pics=https://z826526354.github.io/hsz.github.io/myblog/myblog/images/favicon.png&url=https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/" target="_blank" class="mdui-ripple">Share to QQ</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://telegram.me/share/url?url=https://hsiliver.space/myblog/2019/07/08/函数_作用域链/&text=函数_作用域链" target="_blank" class="mdui-ripple">Share to Telegram</a>
+              <a href="https://telegram.me/share/url?url=https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/&text=函数_作用域链" target="_blank" class="mdui-ripple">Share to Telegram</a>
             </li>
           </ul>
         
@@ -328,10 +328,10 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> bb =<span class="number">234</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> aa = <span class="number">123</span>;</span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> glob = <span class="number">100</span>;</span><br><span class="line">a();</span><br><span class="line"><span class="comment">// a defined(定义) a.[[scope]] --&gt; 0 : GO</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// a doing(执行)   a.[[scope]] --&gt; 0 : a-AO</span></span><br><span class="line"><span class="comment">//				   1 : GO</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// b defined(定义) b.[[scope]] --&gt; 0 : a-AO</span></span><br><span class="line"><span class="comment">//				   1 : GO</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// b doing(执行)   b.[[scope]] --&gt; 0 : b-AO</span></span><br><span class="line"><span class="comment">// 				   1 : a-AO</span></span><br><span class="line"><span class="comment">//				   2 : GO</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/myblog/myblog/2019/07/08/函数_作用域链/a.scope.PNG" alt></p>
-<p><img src="/myblog/myblog/2019/07/08/函数_作用域链/doing.PNG" alt></p>
-<p><img src="/myblog/myblog/2019/07/08/函数_作用域链/b_defined.PNG" alt></p>
-<p><img src="/myblog/myblog/2019/07/08/函数_作用域链/b_doing.PNG" alt></p>
+<p><img src="/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/a.scope.PNG" alt></p>
+<p><img src="/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/doing.PNG" alt></p>
+<p><img src="/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/b_defined.PNG" alt></p>
+<p><img src="/myblog/hsz.github.io/myblog/2019/07/08/函数_作用域链/b_doing.PNG" alt></p>
 <h3 id="闭包1"><a href="#闭包1" class="headerlink" title="闭包1"></a>闭包1</h3><ul>
 <li><p>当内部函数被保存到外部时，将会生成闭包。生成闭包后，内部函数依旧可以访问其所在的外部函数的变量。</p>
 </li>
@@ -398,7 +398,7 @@
         
           <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
         
-        <strong>PermaLink: </strong><a href="https://hsiliver.space/myblog/2019/07/08/函数_作用域链/">https://hsiliver.space/myblog/2019/07/08/函数_作用域链/</a>
+        <strong>PermaLink: </strong><a href="https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/">https://z826526354.github.io/hsz.github.io/myblog/2019/07/08/函数_作用域链/</a>
       </blockquote>
       
         <div class="mdui-text-center">
@@ -462,7 +462,7 @@
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjxuobgdj000444uyijo7nws0"></div>
+<div id="SOHUCS" sid="cjxuofdfr0004bwuy5hqf2uq8"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';
