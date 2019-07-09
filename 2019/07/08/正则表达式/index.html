@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>正则表达式 | hsiliver个人博客</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="hsiliver个人博客">
+  <meta name="description" content="正则表达式作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择  最基本用法： 转移字符 “ \ “ : 会把 \ 后面的字符转为文本 “ \n “ : 回车键 “ \r “ : 该文本行结束 “ \t “ : 一个tab（制表符缩进）  两种创建方式 直接量(常用) 12345var reg = /abc/;  // 定义一个匹配abc的规则var str = &apos;abcd&apos;;reg.test(st">
+<meta name="keywords" content="javascript,正则表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="http://www.hsiliver.space/2019/07/08/正则表达式/index.html">
+<meta property="og:site_name" content="hsiliver个人博客">
+<meta property="og:description" content="正则表达式作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择  最基本用法： 转移字符 “ \ “ : 会把 \ 后面的字符转为文本 “ \n “ : 回车键 “ \r “ : 该文本行结束 “ \t “ : 一个tab（制表符缩进）  两种创建方式 直接量(常用) 12345var reg = /abc/;  // 定义一个匹配abc的规则var str = &apos;abcd&apos;;reg.test(st">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-09T02:08:29.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式">
+<meta name="twitter:description" content="正则表达式作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择  最基本用法： 转移字符 “ \ “ : 会把 \ 后面的字符转为文本 “ \n “ : 回车键 “ \r “ : 该文本行结束 “ \t “ : 一个tab（制表符缩进）  两种创建方式 直接量(常用) 12345var reg = /abc/;  // 定义一个匹配abc的规则var str = &apos;abcd&apos;;reg.test(st">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content="web前端 js基础 个人博客">
+  <meta name="keywords" content=",javascript,正则表达式">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="hsiliver个人博客">
+  <meta name="msapplication-starturl" content="http://www.hsiliver.space/2019/07/08/正则表达式/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="hsiliver个人博客">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <meta property="article:published_time" content="Mon Jul 08 2019 22:05:58 GMT+0800">
+    <meta property="article:modified_time" content="Tue Jul 09 2019 10:08:29 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="http://www.hsiliver.space/2019/07/08/正则表达式/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">hsiliver个人博客</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/12456.jpg" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">hsiliver</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>桃李不言，下自成蹊</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:826526354@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '826526354@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="mdui-ripple sidebar_archives-count">16</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/web前端/">web前端<span class="mdui-ripple sidebar_archives-count">15</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/DOM的基本操作/">DOM的基本操作<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Date/">Date<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/JSON/">JSON<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/apply/">apply<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/arguments/">arguments<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/call/">call<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/es5严格模式/">es5严格模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/for循环/">for循环<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/if语句/">if语句<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/javascript/">javascript<span class="mdui-ripple sidebar_archives-count">15</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js时间线/">js时间线<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js简介/">js简介<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/this/">this<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/try-catch-e/">try{}catch(e){}<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/三目运算符/">三目运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/事件/">事件<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/作用域链/">作用域链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/克隆/">克隆<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/冒泡/">冒泡<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/函数/">函数<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/包装类/">包装类<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型/">原型<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型链/">原型链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/变量声明/">变量声明<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/圣杯模式/">圣杯模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/堆栈数据/">堆栈数据<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/定时器/">定时器<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象/">对象<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象枚举/">对象枚举<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/异步加载/">异步加载<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组/">数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组去重/">数组去重<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/正则表达式/">正则表达式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/浏览器内核/">浏览器内核<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/滚动条/">滚动条<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类型转换/">类型转换<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类数组/">类数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/继承模式/">继承模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/脚本化css/">脚本化css<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/节点树/">节点树<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/视口/">视口<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/运算符/">运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/闭包/">闭包<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/预编译/">预编译<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">画廊</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://z826526354.github.io/myProject/myjob/demo.html" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">我的简历</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-5.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">正则表达式</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-07-08 / <i class="iconfont">&#xe601;</i> hsiliver &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACXUlEQVR42u3aQW4CMQwFUO5/6XZbqWLm2yYhoJcVAiaTl0VsOX78fPV44OHh4eHh4eHhHcZ7xCN56u+v////7Nnrp8prw8PDw9vCuzlqg+U+eyrZoPy90drw8PDwNvKSIztf1jU72YhmOMHDw8M7kpcc3/k/k5CDh4eH9028pHCQBww8PDy8z+Llh3VSTs3nSXibai14eHh4MS+/ZNr/eev9Hh4eHl7AK7c0BaWH3nLzYHCzQjw8PLzFvF66nBca8tS52nSFh4eHdwIvbw64fn3vn5PNwsPDw9vJm1B77VPzGQqBAQ8PD28Br5cK54f7JIT00ms8PDy81bx86l4TQD5bdUOfbhAeHh7eAbxespvAquyoYIGHh4f3Jl619ap30TWfvxkY8PDw8Aa8asNTfvQnYSBPrwsBBg8PD287r3epX02Fe6lzVNrAw8PDO4BXLfJOih2Twi4eHh7efl75kr5aYG19U07W8fDw8Lbzku+riW8P0JwfDw8PbzGvegFWLUNMSsDVt+Ph4eHt4fVKtNWrrDyNnnzGw8PDexdvctxPChzVoPKypis8PDy8MS9HjppKB/Pg4eHhncO7LqFGl0+ty7BHcdxsHB4eHt5iXnXk5dRqUOldj90UI/Dw8PAW8FZceuUNW9U0OgpOeHh4eFt4ybG+ouiQXLC9IDDg4eHhLeNNSqi9Q7wXZm5WgoeHh3cw7/pl1QaC3obi4eHhfRYvP9wnLVnJDHh4eHjv4iXFiLxFoFqemM+Mh4eHt5M3SXbzom01VOTlDzw8PLydvO8beHh4eHh4eHh4B4xfKxGGkpONOzwAAAAASUVORK5CYII=">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=正则表达式&url=http://www.hsiliver.space/2019/07/08/正则表达式/&pic=http://www.hsiliver.space/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=正则表达式&url=http://www.hsiliver.space/2019/07/08/正则表达式/&via=hsiliver" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.hsiliver.space/2019/07/08/正则表达式/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=http://www.hsiliver.space/2019/07/08/正则表达式/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.hsiliver.space/2019/07/08/正则表达式/&title=正则表达式" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=正则表达式&summary=web前端 js基础 个人博客&pics=http://www.hsiliver.space/images/favicon.png&url=http://www.hsiliver.space/2019/07/08/正则表达式/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=http://www.hsiliver.space/2019/07/08/正则表达式/&text=正则表达式" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择</p>
+<ul>
+<li><p>最基本用法：</p>
+<p>转移字符 “ \ “ : 会把 \ 后面的字符转为文本</p>
+<p>“ \n “ : 回车键</p>
+<p>“ \r “ : 该文本行结束</p>
+<p>“ \t “ : 一个tab（制表符缩进）</p>
+</li>
+<li><p>两种创建方式</p>
+<p>直接量(常用)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/abc/</span>;  <span class="comment">// 定义一个匹配abc的规则</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'abcd'</span>;</span><br><span class="line">reg.test(str); <span class="comment">// 测试方法：是否符合上面的reg规则</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/abc/i</span>; <span class="comment">// 忽视大小写（ignoreCase）</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>  <code>new RegExp();</code></p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"abc"</span>, <span class="string">'i'</span>);第二个值填匹配规则</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'ABCD'</span>;</span><br><span class="line">reg.test(str);</span><br><span class="line"><span class="comment">// 效果同上</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(reg)</span><br><span class="line"><span class="comment">// reg1跟reg内容相同，但本质上不是同一个</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="built_in">RegExp</span>(reg);</span><br><span class="line"><span class="comment">// reg跟reg2内容相同， 并且本质上是同一个人（当然也没什么人这么用）</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/ab/</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"abbababab"</span>;</span><br><span class="line">str.match(reg); <span class="comment">// 返回["ab"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果全局匹配</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/ab/g</span>;</span><br><span class="line"><span class="comment">// 返回的就是所有的匹配正确的 ["ab", "ab", "ab", "ab"]</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a/g</span>; <span class="comment">// 匹配全局 以a开头 的所有符合要求的 ["a"]</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"abcde\na"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a/gm</span>; <span class="comment">// m具有匹配多行的功能，["a", "a"]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>两种常用的方法</p>
+<p><code>reg.test()</code>：返回值只有true、false</p>
+<p><code>str.match()</code> ： 返回具体匹配的项</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当我们需要匹配多位的时候，就可以使用表达式“[]”了,里面填可以取到的范围</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[1234567890][1234567890][1234567890]/g</span>;</span><br><span class="line"><span class="comment">// 还可以偷懒写 [0-9A-z], 正则也是符合ASCLL码匹配的</span></span><br><span class="line"><span class="comment">// 全局匹配连着3位是数字0-9的符合要求的</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"123adsdaf45730258afdgw"</span>;</span><br><span class="line"><span class="comment">// ["123", "457", "302"]</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(abc|bcd)/g</span>; <span class="comment">// 全局匹配abc或bcd，正则里的 “|” 代表或</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<ul>
+<li><p>元字符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\w/g</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">/\w === [0-9A-z_];</span></span><br><span class="line"><span class="comment">\W === [^\w]; ==&gt;[非\w]</span></span><br><span class="line"><span class="comment">\d === [0-9];</span></span><br><span class="line"><span class="comment">\D === [^\d];</span></span><br><span class="line"><span class="comment">同时表达式里面也是可以写元字符的 var reg = /[\w]/g</span></span><br><span class="line"><span class="comment">\s === [空白字符] ==&gt; </span></span><br><span class="line"><span class="comment">	空格( )，回车(\r)， 制表(\t)，换行(\n)，垂直换行(\v)，换页(\f)</span></span><br><span class="line"><span class="comment">\S === [^\s];</span></span><br><span class="line"><span class="comment">/*</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\bcde\b/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"abc cde fgh"</span>;</span><br><span class="line"><span class="comment">// ["cde"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// \b === 单词边界</span></span><br><span class="line"><span class="comment">// \B === 非单词边界</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[\u0000-\uffff]/g</span>; <span class="comment">// 匹配所有</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// . === [^\r\n];</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\w+/g</span>;</span><br><span class="line"><span class="comment">// 全局匹配 \w "可以" 出现无数次</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// n+ ==&gt; &#123;1, infinity&#125;</span></span><br><span class="line"><span class="comment">// n* ==&gt; &#123;0, infinity&#125;</span></span><br><span class="line"><span class="comment">// 贪婪匹配原则</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\w*/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"abc"</span>; <span class="comment">// ["abc", ""]</span></span><br></pre></td></tr></table></figure>
+
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d*/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"abc"</span>; <span class="comment">// ["", "", "", ""]</span></span><br><span class="line"><span class="comment">// 不能识别的就用会空代表</span></span><br></pre></td></tr></table></figure>
+
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\w?/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"aaa"</span>;<span class="comment">// ["a", "a", "a", ""]</span></span><br><span class="line"><span class="comment">// n? ==&gt; &#123;0, 1&#125;</span></span><br><span class="line"><span class="comment">// n&#123;x, &#125; ==&gt; &#123;x, infinity&#125;</span></span><br><span class="line"><span class="comment">// 贪婪匹配原则</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\w&#123;1, 3&#125;/g</span>; <span class="comment">// 全局匹配1-3个</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"aaaa"</span>; <span class="comment">// ["aaa", "a"];</span></span><br></pre></td></tr></table></figure>
+
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^sd$/g</span>; <span class="comment">// 以sd开头，以sd结尾</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"sd"</span>; <span class="comment">// ["sd"]</span></span><br><span class="line"><span class="comment">// n$ ==&gt; 以什么结尾</span></span><br><span class="line"><span class="comment">// ^n ==&gt; 以什么开头</span></span><br></pre></td></tr></table></figure>
+
+
+<p>  检验一个字符串，首尾是否含有数字的 正则表达式</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^\d|\d$/</span>;</span><br><span class="line"><span class="comment">// 首尾都有数字 var reg = /^\d[\s\S]*\d$/</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p><code>reg.exec()</code>和<code>reg.lastIndex</code>(鼠标游标位置)，两者是相互配合使用的</p>
+<p>如果不加 <code>g</code> 的话，lastIndex不会变，不动</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/ab/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"abababab"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="comment">// 2 ["ab", index: 0, input: "abababab", groups: undefined]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="comment">// 4 ["ab", index: 2, input: "abababab", groups: undefined]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="comment">// 6 ["ab", index: 4, input: "abababab", groups: undefined]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="comment">// 8 ["ab", index: 6, input: "abababab", groups: undefined]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="comment">// 0 null</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="comment">// 2 ["ab", index: 0, input: "abababab", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>()</code>的记录功能</p>
+<p>加上括号后括号就会记录里面的内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> str = <span class="string">'aaaa'</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1/g</span>;</span><br><span class="line">  <span class="comment">// 全局匹配 \w\w , \1（反向引用）类似复制一个与第一个子表达式一样的匹配表达式</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aabb"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="comment">// ["aabb", "a", "b", index: 0, input: "aaaa", groups: undefined]</span></span><br><span class="line"><span class="comment">// 多出来的两位就是 第一个子表达式和第二个子表达式匹配的内容，而且这两位是正式的数据位</span></span><br></pre></td></tr></table></figure>
+
+<p>  <code>str.match()</code></p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aabb"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg));</span><br><span class="line"><span class="comment">// ["aabb", "a", "b", index: 0, input: "aaaa", groups: undefined]</span></span><br><span class="line"><span class="comment">// 不加 全局g 的情况下， 返回的结果跟reg的exec方法类似</span></span><br><span class="line"><span class="comment">// 一旦加了g 返回 ["aabb"];</span></span><br></pre></td></tr></table></figure>
+
+<p>  <code>str.search()</code>返回匹配到的位置</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aabb"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^bcd$/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(reg)); </span><br><span class="line"><span class="comment">// 一旦匹配不到就返回 -1；</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/bb$/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(reg1)); <span class="comment">// 2 "0 a 1 a 2 b 3 b 4",第二位匹配到</span></span><br></pre></td></tr></table></figure>
+
+<p>  <code>str.split()</code>拆开，这个我们很熟悉，不过多解释</p>
+<p>  <code>str.replace()</code> 替换</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正常的replace:</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"aa"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(<span class="string">"a"</span>, <span class="string">"b"</span>)); <span class="comment">// ba, 这就是非正则的缺陷，只能匹配1个</span></span><br><span class="line"><span class="comment">// 再来换成正则表达式</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg));  <span class="comment">// ba ，因为没有写 g（全局）</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/a/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg1)); <span class="comment">// bb</span></span><br></pre></td></tr></table></figure>
+
+<p>  eg : 形如 aabb 的都倒过来</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"aabb"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="string">"$2$2$1$1"</span>)); <span class="comment">// 方法1</span></span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="function"><span class="keyword">function</span> (<span class="params">$, $<span class="number">1</span>, $<span class="number">2</span></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 第一个参数是正则表达式匹配的结果,</span></span><br><span class="line">    <span class="comment">// 第二个参数是第一个子表达式匹配的内容，</span></span><br><span class="line">    <span class="comment">// 第三个参数是第二个子表达式匹配的内容，</span></span><br><span class="line">    <span class="keyword">return</span> $<span class="number">2</span> + $<span class="number">2</span> + $<span class="number">1</span> + $<span class="number">1</span>;</span><br><span class="line">&#125;))</span><br><span class="line"><span class="comment">// str.toUpperCase(),变大写</span></span><br><span class="line"><span class="comment">// str.toLowerCase(),变小写</span></span><br></pre></td></tr></table></figure>
+
+<p>  eg : the-first-name ===&gt; theFirstName</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/-(\w)/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"the-first-name"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="function"><span class="keyword">function</span> (<span class="params">$, $<span class="number">1</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $<span class="number">1.</span>toUpperCase();</span><br><span class="line">    <span class="comment">// 里面的function是多次执行的</span></span><br><span class="line">&#125;))</span><br><span class="line"><span class="comment">// 可以制作在线翻译功能</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="正向预查，-正向断言"><a href="#正向预查，-正向断言" class="headerlink" title="正向预查， 正向断言"></a>正向预查， 正向断言</h5>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"abaaaaa"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a(?=b)/g</span>; <span class="comment">// 全局匹配后面有 b 的 a</span></span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg)); <span class="comment">// a</span></span><br><span class="line"><span class="comment">// 意思是这个b参与匹配限定，但是不参与返回结果</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a(?!b)/g</span>; <span class="comment">// 全局匹配后面没有 b 的 a ==&gt; 非正向预查</span></span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg));<span class="comment">// ["a", "a", "a", "a", "a"];</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>  非贪婪匹配</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aaaa"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a+/g</span>; <span class="comment">// 贪婪</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/a+?/g</span> <span class="comment">// 非贪婪</span></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/a&#123;1, 3&#125;?/g</span>;  <span class="comment">// 有1绝对不取3，？可以打破任何规则</span></span><br><span class="line"><span class="keyword">var</span> reg3 = <span class="regexp">/a??/g</span>; <span class="comment">// 能取0就不会取1， a? 匹配 0 ~ 1 位a</span></span><br></pre></td></tr></table></figure>
+
+<p>百度2014最后一道</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"10000000000"</span>; <span class="comment">// 转换为形如 1,000,000,000</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(?=(\B)(\d&#123;3&#125;)+$)/g</span>; </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">$ ==&gt; 从后往前查</span></span><br><span class="line"><span class="comment">n+ ==&gt; &#123;1, infinity&#125;</span></span><br><span class="line"><span class="comment">\d ==&gt; &#123;0-9&#125;</span></span><br><span class="line"><span class="comment">\B ==&gt; 非单词边界</span></span><br><span class="line"><span class="comment">？= ==&gt; 参与匹配限定，但是不参与返回结果</span></span><br><span class="line"><span class="comment">()前面什么也不填 ==&gt; 匹配空</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line">str.replace(reg, <span class="string">"."</span>);</span><br><span class="line"><span class="comment">// 空替换为 "."</span></span><br></pre></td></tr></table></figure>
+
+<p>去重</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aaaaabbbbbccccc"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1*/g</span>;</span><br><span class="line"><span class="comment">// n* ==&gt; &#123;0~infinity&#125;;</span></span><br><span class="line"><span class="comment">// 匹配所有 0到多个 ： ["aaaaa", "bbbbb", "ccccc"]</span></span><br><span class="line">str.replace(reg, <span class="string">"$1"</span>);</span><br><span class="line"><span class="comment">// 将匹配到的替换成第一个子表达式</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="http://www.hsiliver.space/2019/07/08/正则表达式/">http://www.hsiliver.space/2019/07/08/正则表达式/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/web前端/">web前端</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/javascript/">javascript</a><a class="mdui-ripple article_tags-link" href="/tags/正则表达式/">正则表达式</a>
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.png" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/2019/07/09/README/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2019/07/08/JSON/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjxv6s744002upouya8d37ncj"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/u/5123380761" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/z826526354" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/hsiliver/activities" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=826526354&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 hsiliver<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,30 +13,30 @@
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="hsiliver个人博客">
   <meta name="description" content="js —— Javascript：解释性语言 js ——JavaScript：解释性语言同时也叫  ECMAScript  编译    C，C++等 ​    优点：快 ​    不足：移植性不好，(不跨平台)    解释    javascrip， php等  ​        优点：跨平台（不需要编译成文件） ​        不足：稍慢  混合型    Java  ​        .jav">
-<meta name="keywords" content="javascript">
+<meta name="keywords" content="javascript,js简介,变量声明,浏览器内核,堆栈数据,if语句,for循环,运算符,类型转换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js简介">
-<meta property="og:url" content="http://hsiliver.space/2019/07/08/js简介/index.html">
+<meta property="og:url" content="http://www.hsiliver.space/2019/07/08/js简介/index.html">
 <meta property="og:site_name" content="hsiliver个人博客">
 <meta property="og:description" content="js —— Javascript：解释性语言 js ——JavaScript：解释性语言同时也叫  ECMAScript  编译    C，C++等 ​    优点：快 ​    不足：移植性不好，(不跨平台)    解释    javascrip， php等  ​        优点：跨平台（不需要编译成文件） ​        不足：稍慢  混合型    Java  ​        .jav">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://hsiliver.space/2019/07/08/js简介/zhan2.PNG">
-<meta property="og:image" content="http://hsiliver.space/2019/07/08/js简介/zhan.PNG">
-<meta property="og:image" content="http://hsiliver.space/2019/07/08/js简介/zhan3.PNG">
-<meta property="og:updated_time" content="2019-07-08T14:02:17.147Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.hsiliver.space/2019/07/08/js简介/zhan2.PNG">
+<meta property="og:image" content="http://www.hsiliver.space/2019/07/08/js简介/zhan.PNG">
+<meta property="og:image" content="http://www.hsiliver.space/2019/07/08/js简介/zhan3.PNG">
+<meta property="og:updated_time" content="2019-07-09T02:17:34.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js简介">
 <meta name="twitter:description" content="js —— Javascript：解释性语言 js ——JavaScript：解释性语言同时也叫  ECMAScript  编译    C，C++等 ​    优点：快 ​    不足：移植性不好，(不跨平台)    解释    javascrip， php等  ​        优点：跨平台（不需要编译成文件） ​        不足：稍慢  混合型    Java  ​        .jav">
-<meta name="twitter:image" content="http://hsiliver.space/2019/07/08/js简介/zhan2.PNG">
+<meta name="twitter:image" content="http://www.hsiliver.space/2019/07/08/js简介/zhan2.PNG">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
   <meta name="description" content="web前端 js基础 个人博客">
-  <meta name="keywords" content=",javascript">
+  <meta name="keywords" content=",javascript,js简介,变量声明,浏览器内核,堆栈数据,if语句,for循环,运算符,类型转换">
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="hsiliver个人博客">
-  <meta name="msapplication-starturl" content="http://hsiliver.space/2019/07/08/js简介/">
+  <meta name="msapplication-starturl" content="http://www.hsiliver.space/2019/07/08/js简介/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="hsiliver个人博客">
@@ -45,11 +45,11 @@
 
   
     <meta property="article:published_time" content="Mon Jul 08 2019 14:45:09 GMT+0800">
-    <meta property="article:modified_time" content="Mon Jul 08 2019 22:02:17 GMT+0800">
+    <meta property="article:modified_time" content="Tue Jul 09 2019 10:17:34 GMT+0800">
   
 
   
-    <link rel="canonical" href="http://hsiliver.space/2019/07/08/js简介/">
+    <link rel="canonical" href="http://www.hsiliver.space/2019/07/08/js简介/">
   
 
   <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
@@ -101,7 +101,7 @@
     <div class="mdui-grid-tile-actions">
       <div class="mdui-grid-tile-text">
         <div class="mdui-grid-tile-title">hsiliver</div>
-        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i></div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>桃李不言，下自成蹊</div>
       </div>
       
         <div class="mdui-grid-tile-buttons">
@@ -124,7 +124,7 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/07/">July 2019<span class="mdui-ripple sidebar_archives-count">3</span></a>
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="mdui-ripple sidebar_archives-count">16</span></a>
         
       </div>
     </div>
@@ -136,9 +136,7 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        
-        
-          <a href="javascript:;" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme" style="justify-content: center;">分类为空</a>
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/web前端/">web前端<span class="mdui-ripple sidebar_archives-count">15</span></a>
         
       </div>
     </div>
@@ -150,7 +148,7 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        <a class="mdui-ripple sidebar_archives-link" href="/tags/javascript/">javascript<span class="mdui-ripple sidebar_archives-count">2</span></a>
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/DOM的基本操作/">DOM的基本操作<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Date/">Date<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/JSON/">JSON<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/apply/">apply<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/arguments/">arguments<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/call/">call<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/es5严格模式/">es5严格模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/for循环/">for循环<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/if语句/">if语句<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/javascript/">javascript<span class="mdui-ripple sidebar_archives-count">15</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js时间线/">js时间线<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js简介/">js简介<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/this/">this<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/try-catch-e/">try{}catch(e){}<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/三目运算符/">三目运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/事件/">事件<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/作用域链/">作用域链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/克隆/">克隆<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/冒泡/">冒泡<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/函数/">函数<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/包装类/">包装类<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型/">原型<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型链/">原型链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/变量声明/">变量声明<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/圣杯模式/">圣杯模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/堆栈数据/">堆栈数据<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/定时器/">定时器<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象/">对象<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象枚举/">对象枚举<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/异步加载/">异步加载<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组/">数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组去重/">数组去重<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/正则表达式/">正则表达式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/浏览器内核/">浏览器内核<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/滚动条/">滚动条<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类型转换/">类型转换<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类数组/">类数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/继承模式/">继承模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/脚本化css/">脚本化css<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/节点树/">节点树<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/视口/">视口<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/运算符/">运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/闭包/">闭包<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/预编译/">预编译<span class="mdui-ripple sidebar_archives-count">1</span></a>
         
       </div>
     </div>
@@ -187,7 +185,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-1.png" style="max-height: 240px;">
+      <img src="/images/random/material-3.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">js简介</div>
@@ -203,7 +201,7 @@
             
             <li class="mdui-menu-item" disabled>
               
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB7ElEQVR42u3aS3KDQAwFQO5/6WSbKgfypMExoGZFGeOZ9kI1+mxfj7g2DAwMDAwMDIzLMLb4+vn91/u9T35ZfuetfA8YGBgzGfnCr/f50xwW4TEwMEYykiC7snD1r/ljDxgYGBjxMrtHt+CXMTAwMN4XcM9NSjEwMDDOTWKT7eZvfSwXx8DAuCFjvTGwfn+J/gYGBsYlGeURhyAd7YXUf50ZwcDAuBUjaUkmzci8kZC0GZJWKAYGxjRGNQU9Tkqr30/+LAwMjMmM9a1Uw3F1IGP3XQwMjMGMaoGsGljzJHkp4GJgYDyIkR/LloJj8AvlFTEwMEYyqsfEapksD6ZRCMbAwBjJqI7RV8NongC/fWYEAwPjhoz1Mtn6mEW1JIeBgTGHkbcV8+ZlL+mtHhwxMDCmMXqlt5XjY6+1gIGBMZORJ5D51pPC3HF5rtkYwMDAeCijF3DzjSbhtZcAY2BgTGPkjcmzwL2AjoGBMZmx0oDMS2xRapofQzEwMMYwqoEvOeTlyWr1KQYGxmRGPgZRbQOURyjy4QwMDIyRjN5WekOo1eBeGGDFwMAYz6i2PHtjHEkgxsDAwEgY+SDXSiMBAwMDo5rE5u3JnNos4WFgYAxjVBsDeWEuOQJiYGBgHDPue2FgYGBgYGBgfPT6BnSsu2DVdPN6AAAAAElFTkSuQmCC">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACXklEQVR42u3aO3bDMAwEQN//0kmbRtECJBHZGVV+/kgcFQK8xOvro48XHh4eHh4eHh7ew3iv+Lg8XfD9n+8k31lZGx4eHt4M7+ZRG/CSBe297uVNwcPDwxvkXS3o6nX1V1ffWT8DHh4e3rvwrh7cSTuevI+Hh4f3H3j5p3mDjoeHh/dk3om4IVnurtuBh4eHN8nLN5nmX4/u7+Hh4eEFvPJI08hwwLahKzw8PLwDvF3tch4fVG9HeQgMDw8Pb4SXn6J3yRPgDWEEHh4e3gLv9x9XRweqsWw+jhBdFw8PD2+ElwcH1W3+vLQkIwJLKTUeHh7eMV6+DZa3yNUyUy1ReHh4eJO85FGet8XVUKMcNCSBBR4eHt4IL/nznxSJ6thBrwiVCwMeHh7eMV6vje6FueuBRRTj4uHh4R3jVSPa3kJ7jXI58sDDw8Mb4fVgeUtdjSeW4mM8PDy8w7zeQ39XcFAIZ3fNlOHh4eEt86rbXXkB2FUY8jPg4eHhTfJ6m/R5keiNGlQjYzw8PLwZXhI3rI8IVBvrm+GA39eJh4eH90e8HJY00EnZyDe6btaDh4eHN87LA9yV2KKKLBQwPDw8vEHeri3/3oM+KSrRVhkeHh7eYV716G1KVVvtlevi4eHhnea94qNXMPIh15U2Gg8PD2+eVy0G1Qi4OnCwuTDg4eHhHePlEWp1CCCPeg9mLXh4eHgP4OXxax5MlAcF8PDw8N6E12uL14vBUhiBh4eHd4BXXdDKp3lAXL59eHh4eCO89QjgJiBoPeibv8LDw8M7zPu8Aw8PDw8PDw8P7wHHNwwhXclysM69AAAAAElFTkSuQmCC">
               
             </li>
           </ul>
@@ -212,25 +210,25 @@
           <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
           <ul class="mdui-menu" id="share_menu">
             <li class="mdui-menu-item">
-              <a href="http://service.weibo.com/share/share.php?appkey=&title=js简介&url=http://hsiliver.space/2019/07/08/js简介/&pic=http://hsiliver.space/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=js简介&url=http://www.hsiliver.space/2019/07/08/js简介/&pic=http://www.hsiliver.space/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://twitter.com/intent/tweet?text=js简介&url=http://hsiliver.space/2019/07/08/js简介/&via=hsiliver" target="_blank" class="mdui-ripple">分享到Twitter</a>
+              <a href="https://twitter.com/intent/tweet?text=js简介&url=http://www.hsiliver.space/2019/07/08/js简介/&via=hsiliver" target="_blank" class="mdui-ripple">分享到Twitter</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=http://hsiliver.space/2019/07/08/js简介/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.hsiliver.space/2019/07/08/js简介/" target="_blank" class="mdui-ripple">分享到Facebook</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://plus.google.com/share?url=http://hsiliver.space/2019/07/08/js简介/" target="_blank" class="mdui-ripple">分享到Google+</a>
+              <a href="https://plus.google.com/share?url=http://www.hsiliver.space/2019/07/08/js简介/" target="_blank" class="mdui-ripple">分享到Google+</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://hsiliver.space/2019/07/08/js简介/&title=js简介" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.hsiliver.space/2019/07/08/js简介/&title=js简介" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=js简介&summary=web前端 js基础 个人博客&pics=http://hsiliver.space/images/favicon.png&url=http://hsiliver.space/2019/07/08/js简介/" target="_blank" class="mdui-ripple">分享到QQ</a>
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=js简介&summary=web前端 js基础 个人博客&pics=http://www.hsiliver.space/images/favicon.png&url=http://www.hsiliver.space/2019/07/08/js简介/" target="_blank" class="mdui-ripple">分享到QQ</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://telegram.me/share/url?url=http://hsiliver.space/2019/07/08/js简介/&text=js简介" target="_blank" class="mdui-ripple">分享到Telegram</a>
+              <a href="https://telegram.me/share/url?url=http://www.hsiliver.space/2019/07/08/js简介/&text=js简介" target="_blank" class="mdui-ripple">分享到Telegram</a>
             </li>
           </ul>
         
@@ -510,7 +508,7 @@
         
           <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
         
-        <strong>本文链接：</strong><a href="http://hsiliver.space/2019/07/08/js简介/">http://hsiliver.space/2019/07/08/js简介/</a>
+        <strong>本文链接：</strong><a href="http://www.hsiliver.space/2019/07/08/js简介/">http://www.hsiliver.space/2019/07/08/js简介/</a>
       </blockquote>
       
         <div class="mdui-text-center">
@@ -520,8 +518,10 @@
     </div>
     <footer class="mdui-card-actions">
       
+        <a class="mdui-ripple article_categories-link" href="/categories/web前端/">web前端</a>
       
-        <a class="mdui-ripple article_tags-link" href="/tags/javascript/">javascript</a>
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/for循环/">for循环</a><a class="mdui-ripple article_tags-link" href="/tags/if语句/">if语句</a><a class="mdui-ripple article_tags-link" href="/tags/javascript/">javascript</a><a class="mdui-ripple article_tags-link" href="/tags/js简介/">js简介</a><a class="mdui-ripple article_tags-link" href="/tags/变量声明/">变量声明</a><a class="mdui-ripple article_tags-link" href="/tags/堆栈数据/">堆栈数据</a><a class="mdui-ripple article_tags-link" href="/tags/浏览器内核/">浏览器内核</a><a class="mdui-ripple article_tags-link" href="/tags/类型转换/">类型转换</a><a class="mdui-ripple article_tags-link" href="/tags/运算符/">运算符</a>
       
     </footer>
     
@@ -569,7 +569,7 @@
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjxuoqmqr0003jcuyy7x2jk8v"></div>
+<div id="SOHUCS" sid="cjxv6s740002rpouy2ve4yuwc"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';

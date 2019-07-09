@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>try {} catch (e) {} | hsiliver个人博客</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="hsiliver个人博客">
+  <meta name="description" content="try {} catch (e) {} 防止部分的代码出错，影响后续代码的执行  try 里面的代码如果都正确，catch里面的代码就不执行，否则catch里面的代码执行 123456789101112try &amp;#123;    console.log(&apos;a&apos;);    console.log(b);    console.log(&apos;c&apos;);    // 到第二个console 的时候; 不执行，">
+<meta name="keywords" content="javascript,try{}catch(e){},es5严格模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="try {} catch (e) {}">
+<meta property="og:url" content="http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/index.html">
+<meta property="og:site_name" content="hsiliver个人博客">
+<meta property="og:description" content="try {} catch (e) {} 防止部分的代码出错，影响后续代码的执行  try 里面的代码如果都正确，catch里面的代码就不执行，否则catch里面的代码执行 123456789101112try &amp;#123;    console.log(&apos;a&apos;);    console.log(b);    console.log(&apos;c&apos;);    // 到第二个console 的时候; 不执行，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-09T02:13:44.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="try {} catch (e) {}">
+<meta name="twitter:description" content="try {} catch (e) {} 防止部分的代码出错，影响后续代码的执行  try 里面的代码如果都正确，catch里面的代码就不执行，否则catch里面的代码执行 123456789101112try &amp;#123;    console.log(&apos;a&apos;);    console.log(b);    console.log(&apos;c&apos;);    // 到第二个console 的时候; 不执行，">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content="web前端 js基础 个人博客">
+  <meta name="keywords" content=",javascript,try{}catch(e){},es5严格模式">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="hsiliver个人博客">
+  <meta name="msapplication-starturl" content="http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="hsiliver个人博客">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <meta property="article:published_time" content="Mon Jul 08 2019 21:59:58 GMT+0800">
+    <meta property="article:modified_time" content="Tue Jul 09 2019 10:13:44 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">hsiliver个人博客</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/12456.jpg" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">hsiliver</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>桃李不言，下自成蹊</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:826526354@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '826526354@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="mdui-ripple sidebar_archives-count">16</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/web前端/">web前端<span class="mdui-ripple sidebar_archives-count">15</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/DOM的基本操作/">DOM的基本操作<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Date/">Date<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/JSON/">JSON<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/apply/">apply<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/arguments/">arguments<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/call/">call<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/es5严格模式/">es5严格模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/for循环/">for循环<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/if语句/">if语句<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/javascript/">javascript<span class="mdui-ripple sidebar_archives-count">15</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js时间线/">js时间线<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js简介/">js简介<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/this/">this<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/try-catch-e/">try{}catch(e){}<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/三目运算符/">三目运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/事件/">事件<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/作用域链/">作用域链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/克隆/">克隆<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/冒泡/">冒泡<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/函数/">函数<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/包装类/">包装类<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型/">原型<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型链/">原型链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/变量声明/">变量声明<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/圣杯模式/">圣杯模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/堆栈数据/">堆栈数据<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/定时器/">定时器<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象/">对象<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象枚举/">对象枚举<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/异步加载/">异步加载<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组/">数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组去重/">数组去重<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/正则表达式/">正则表达式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/浏览器内核/">浏览器内核<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/滚动条/">滚动条<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类型转换/">类型转换<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类数组/">类数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/继承模式/">继承模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/脚本化css/">脚本化css<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/节点树/">节点树<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/视口/">视口<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/运算符/">运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/闭包/">闭包<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/预编译/">预编译<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">画廊</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://z826526354.github.io/myProject/myjob/demo.html" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">我的简历</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-16.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">try {} catch (e) {}</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-07-08 / <i class="iconfont">&#xe601;</i> hsiliver &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1klEQVR42u3a3W7CMAwG0L7/S2+3kzbazzawkpxcIVRCTpDm+ef42nId2NjY2NjY2NjY2LdkH/H6/ak/tv7x/vk+yfvVnS/OjI2Njb00++JP/4NDnH/2HJbvk5wnOjM2Njb2Buz5QXvXkXzX5BlsbGxs7F6qkCDzsDc5MzY2Njb2OfsVBankKrGxsbGxewWa6lGq+yRh7B9qadjY2Ni3Z+dB6D6v39rfxsbGxr4xu7ryQk+1SVwd4imfHBsbG3tRdh4Yzo8elXXeMnyJjY2NvSe7GpYmKcE7wyc2Njb2DuxJob9K6hWJkouOUh1sbGzspdmTK7horw4aunlwKjd6sbGxsTdjVwcxH+05SWySADZq9GJjY2N/LDtPKublp2qToHpx5UYvNjY29hLsZIskLOVjmvn39poQzVoaNjY29oez83DVCzPPGv2pFqGwsbGxd2DnISEp659fU95OyBOePGRiY2Nj78DupQS9JnF+cb0E6SW1NGxsbOxbspPEo/mvf1zu6YW38sAoNjY29tLsfOtJS6CX8PQavdjY2Nj7sJMPJ4Gnmnj0hi+rT2JjY2Pvxs5HYSZJS94S6A10YmNjY2P3ykPV0v88gRkNX2JjY2MvxE541RGZXhjrBcJCoxobGxt7aXZvgLKcDBTDz7yYhY2Njb0De1I2mhSh5mHvhbU0bGxs7A9nV68jP/Trno9+NmxsbOwt2UlakoS9PJF4VnsYGxsbe2d2b4gnf6d6BUdxPfx5sLGxsRdlV1e1kdAb7kmSk/IO2NjY2Iuyq4GhV7KfFIl6Ba8obmNjY2MvxK4GrfkFVXfrtSWwsbGxd2MnX9kb2akmM5Oi0sMLwsbGxsYOnslLTsk+1fbDE7oi2NjY2Nuwq4X7ZzV0q8kSNjY29m7sapN10hKokpLdLlrO2NjY2Euz56WiZM9qYKumKxcXgY2Njb0oe5+FjY2NjY2NjY2NfZv1DSdlw6Zy0LFAAAAAAElFTkSuQmCC">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=try {} catch (e) {}&url=http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/&pic=http://www.hsiliver.space/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=try {} catch (e) {}&url=http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/&via=hsiliver" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/&title=try {} catch (e) {}" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=try {} catch (e) {}&summary=web前端 js基础 个人博客&pics=http://www.hsiliver.space/images/favicon.png&url=http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/&text=try {} catch (e) {}" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h3 id="try-catch-e"><a href="#try-catch-e" class="headerlink" title="try {} catch (e) {}"></a>try {} catch (e) {}</h3><ul>
+<li><p>防止部分的代码出错，影响后续代码的执行</p>
+</li>
+<li><p>try 里面的代码如果都正确，catch里面的代码就不执行，否则catch里面的代码执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'c'</span>);</span><br><span class="line">    <span class="comment">// 到第二个console 的时候; 不执行，但是try外边的 "h" 依然被执行 </span></span><br><span class="line">&#125;<span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">    <span class="comment">// catch 的作用就是把try里面的错误捕捉到，</span></span><br><span class="line">    <span class="comment">// 然后把（error.message error.name）封</span></span><br><span class="line">    <span class="comment">// 装到一个error对象里面, 然后传给e，供我们使用</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'h'</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>在不知道后台传来data数据是否有错误的时候，这个是非常方便</p>
+</li>
+<li><h4 id="Error-name-的六种值对应的信息"><a href="#Error-name-的六种值对应的信息" class="headerlink" title="Error.name　的六种值对应的信息"></a>Error.name　的六种值对应的信息</h4><p>1）EvalError : eval() 的使用与定义不一致</p>
+<p>2）RangeError : 数值越界</p>
+<p>3）ReferenceError : 非法或不能识别的引用数值 ***</p>
+<p>​      例如：未经声明就使用</p>
+<p>4）SyntaxError : 发生语法解析错误 ***</p>
+<p>​      例如：出现中文符号</p>
+<p>5）TypeError : 操作数据类型错误 **</p>
+<p>6）URLError : URL处理函数使用不当</p>
+</li>
+</ul>
+<h2 id="ES5严格模式"><a href="#ES5严格模式" class="headerlink" title="ES5严格模式"></a>ES5严格模式</h2><ul>
+<li><p>目前我们使用的浏览器都是基于es3.0 的 + es5.0 的新增方法 使用的;</p>
+<p>如果他俩产生冲突就会以es5.0为准, 否则使用es3.0， 定义为 “es5.0严格模式”</p>
+</li>
+</ul>
+<p>  启动开关：”use strict”;  必须写在逻辑的最顶端；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee) <span class="comment">// 报错如下 caller一样</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>两种用法：</p>
+<p>全局严格模式</p>
+<p>局部函数内部严格模式</p>
+</li>
+<li><p>必须要在支持es5的浏览器上才可以</p>
+</li>
+<li><p>不支持with () {}</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span> : <span class="string">"obj"</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'window'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'scope'</span>;</span><br><span class="line">    width(obj) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// with里面的代码会按照正常顺序执行，</span></span><br><span class="line">    <span class="comment">// 但是当with传一个对象后就发生了大变化，</span></span><br><span class="line">    <span class="comment">// 它会把这个对象当做with要执行的代码体的作用域链的最顶端；</span></span><br><span class="line">    <span class="comment">// 也就是会作用域链改变</span></span><br><span class="line">    <span class="comment">// with跟命名空间配合使用，可以发挥很大的功效</span></span><br><span class="line">    width (<span class="built_in">document</span>) &#123;</span><br><span class="line">        write (<span class="string">'a'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 但是with 会更改作用域链，使代码运行效率变得非常慢</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量赋值前必须声明</p>
+</li>
+<li><p>局部的this必须被赋值或者外部new，而且赋什么就是什么，否则指向空（undefined）</p>
+<p>（可以使用call / apply）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">funciton test() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// 123</span></span><br><span class="line">&#125;</span><br><span class="line">test.call(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在非严格模式下，<code>test.call(原始值)</code>是坚决不行的，会给你包装成包装类Number {123}</p>
+<p>全局下的<code>console.log(this)</code>; 指向window；</p>
+</li>
+<li><p>拒绝重复的属性和参数，重复属性不报错，重复参数报错</p>
+</li>
+<li><p>不允许使用eval（）;</p>
+<p>可以把字符串当成代码执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="string">'console.log(123)'</span>); <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<p>  可以改变作用域</p>
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/">http://www.hsiliver.space/2019/07/08/try...catch,es5严格模式/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/web前端/">web前端</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/es5严格模式/">es5严格模式</a><a class="mdui-ripple article_tags-link" href="/tags/javascript/">javascript</a><a class="mdui-ripple article_tags-link" href="/tags/try-catch-e/">try{}catch(e){}</a>
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.png" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/2019/07/08/DOM/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2019/07/08/数组/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjxv6s7110009pouyosth5eav"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/u/5123380761" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/z826526354" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/hsiliver/activities" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=826526354&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 hsiliver<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

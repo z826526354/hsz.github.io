@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>事件 —— 交互体验的核心功能 | hsiliver个人博客</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="hsiliver个人博客">
+  <meta name="description" content="事件 —— 交互体验的核心功能 ele.onxxx = function (event) {} 兼容性很好，但是一个元素的同一个事件上只能绑定一个处理程序 基本等同于写在HTML行间上（句柄绑定方式）  obj.addEventListener(type, fn, false); IE9 以下不兼容，可以为一个事件绑定多个处理程序（地址不一样的fn）  obj.attachEvent(&amp;#39;o">
+<meta name="keywords" content="javascript,冒泡,事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件 —— 交互体验的核心功能">
+<meta property="og:url" content="http://www.hsiliver.space/2019/07/08/事件/index.html">
+<meta property="og:site_name" content="hsiliver个人博客">
+<meta property="og:description" content="事件 —— 交互体验的核心功能 ele.onxxx = function (event) {} 兼容性很好，但是一个元素的同一个事件上只能绑定一个处理程序 基本等同于写在HTML行间上（句柄绑定方式）  obj.addEventListener(type, fn, false); IE9 以下不兼容，可以为一个事件绑定多个处理程序（地址不一样的fn）  obj.attachEvent(&amp;#39;o">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-09T02:07:55.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="事件 —— 交互体验的核心功能">
+<meta name="twitter:description" content="事件 —— 交互体验的核心功能 ele.onxxx = function (event) {} 兼容性很好，但是一个元素的同一个事件上只能绑定一个处理程序 基本等同于写在HTML行间上（句柄绑定方式）  obj.addEventListener(type, fn, false); IE9 以下不兼容，可以为一个事件绑定多个处理程序（地址不一样的fn）  obj.attachEvent(&amp;#39;o">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content="web前端 js基础 个人博客">
+  <meta name="keywords" content=",javascript,冒泡,事件">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="hsiliver个人博客">
+  <meta name="msapplication-starturl" content="http://www.hsiliver.space/2019/07/08/事件/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="hsiliver个人博客">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <meta property="article:published_time" content="Mon Jul 08 2019 22:04:58 GMT+0800">
+    <meta property="article:modified_time" content="Tue Jul 09 2019 10:07:55 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="http://www.hsiliver.space/2019/07/08/事件/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">hsiliver个人博客</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/12456.jpg" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">hsiliver</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>桃李不言，下自成蹊</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:826526354@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '826526354@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="mdui-ripple sidebar_archives-count">16</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/web前端/">web前端<span class="mdui-ripple sidebar_archives-count">15</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/DOM的基本操作/">DOM的基本操作<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Date/">Date<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/JSON/">JSON<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/apply/">apply<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/arguments/">arguments<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/call/">call<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/es5严格模式/">es5严格模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/for循环/">for循环<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/if语句/">if语句<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/javascript/">javascript<span class="mdui-ripple sidebar_archives-count">15</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js时间线/">js时间线<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js简介/">js简介<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/this/">this<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/try-catch-e/">try{}catch(e){}<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/三目运算符/">三目运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/事件/">事件<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/作用域链/">作用域链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/克隆/">克隆<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/冒泡/">冒泡<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/函数/">函数<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/包装类/">包装类<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型/">原型<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型链/">原型链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/变量声明/">变量声明<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/圣杯模式/">圣杯模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/堆栈数据/">堆栈数据<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/定时器/">定时器<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象/">对象<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象枚举/">对象枚举<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/异步加载/">异步加载<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组/">数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组去重/">数组去重<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/正则表达式/">正则表达式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/浏览器内核/">浏览器内核<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/滚动条/">滚动条<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类型转换/">类型转换<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类数组/">类数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/继承模式/">继承模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/脚本化css/">脚本化css<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/节点树/">节点树<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/视口/">视口<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/运算符/">运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/闭包/">闭包<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/预编译/">预编译<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">画廊</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://z826526354.github.io/myProject/myjob/demo.html" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">我的简历</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-10.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">事件 —— 交互体验的核心功能</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-07-08 / <i class="iconfont">&#xe601;</i> hsiliver &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACYElEQVR42u3aQY4iMRAEwP7/p3evI61YMl1tN4PCJzRA4/BIdild15+vHhceHh4eHh4eHt6H8a54RI9+8fmff0k+M5kbHh4e3hleMukEU0zin2/lv/tmUfDw8PAO8l5NKAfk38oXK58bHh4e3ufzksI6wfz/t/Dw8PC+idcWym2JjIeHh/f5vPwn81h2fsAczVrw8PDwYt4kYtj9+uj9Hh4eHl7Aq1ua4sutteaAm5uu8PDw8DbwJhf/98YWbdMVHh4e3lO8fCtPXk8OlXnAgYeHh3eG1xbHbbk8+cvaguLh4eGd5OWXT2sl8trxUJf7eHh4eJt57aY8utQvy+j8XTw8PLyneGtTTLb+ZCnXIuNR6wAeHh7eEu/ei643W3YwxbU2Lzw8PLyneO2VfzuhyZIVQQkeHh7eZl5bRrctVtFlf3xURMuNh4eHt5k32dDXDo9JPLF4v4eHh4d3K28SAVzBaBsRbm66wsPDw9vAy7fdtVJ7fjDkT8DDw8M7w1trFMgL6+QyLC+do2YvPDw8vM289tppHkkkrVqT8hoPDw/vJK8NC/Lyd9JcVf8b8PDw8A7ykoeugZPDII9CRlkLHh4e3pEborWYIC+4r3K8CUrw8PDwNvPa0QYQbdvWpCULDw8P7wyv3Y7blqn23S1NV3h4eHgbePfGuMnzjx4MeHh4eNt4kwi1XaZksbZnLXh4eHgP8ZKoNw8m6kYBPDw8vF/Ca6+77joMbm4dwMPDwxvz8gm1F2ZtDJHHu3h4eHhP8doIIG8FuLfhIAqI8fDw8Dbzvm/g4eHh4eHh4eF9wPgLxaLOSrobpcoAAAAASUVORK5CYII=">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=事件 —— 交互体验的核心功能&url=http://www.hsiliver.space/2019/07/08/事件/&pic=http://www.hsiliver.space/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=事件 —— 交互体验的核心功能&url=http://www.hsiliver.space/2019/07/08/事件/&via=hsiliver" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.hsiliver.space/2019/07/08/事件/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=http://www.hsiliver.space/2019/07/08/事件/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.hsiliver.space/2019/07/08/事件/&title=事件 —— 交互体验的核心功能" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=事件 —— 交互体验的核心功能&summary=web前端 js基础 个人博客&pics=http://www.hsiliver.space/images/favicon.png&url=http://www.hsiliver.space/2019/07/08/事件/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=http://www.hsiliver.space/2019/07/08/事件/&text=事件 —— 交互体验的核心功能" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h2 id="事件-——-交互体验的核心功能"><a href="#事件-——-交互体验的核心功能" class="headerlink" title="事件 —— 交互体验的核心功能"></a>事件 —— 交互体验的核心功能</h2><ul>
+<li><p><code>ele.onxxx = function (event) {}</code></p>
+<p>兼容性很好，但是一个元素的同一个事件上只能绑定一个处理程序</p>
+<p>基本等同于写在HTML行间上（句柄绑定方式）</p>
+</li>
+<li><p><code>obj.addEventListener(type, fn, false);</code></p>
+<p>IE9 以下不兼容，可以为一个事件绑定多个处理程序（地址不一样的fn）</p>
+</li>
+<li><p><code>obj.attachEvent(&#39;on&#39;+type, fn);</code></p>
+<p>IE 独有，一个事件同样可以绑定多个处理程序</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 点击输出li的序号</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> oLi = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span></span><br><span class="line"><span class="javascript">			<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; oLi.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">				oLi[i].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">					<span class="built_in">console</span>.log(i);</span></span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>封装兼容性事件监听</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">ele, type, handle</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ele.addEventListener) &#123;</span><br><span class="line">        ele.addEventListener(type, handle, <span class="literal">false</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (ele.attachEvent) &#123;</span><br><span class="line">        ele.attachEvent(<span class="string">'on'</span> + type, funciton () &#123;</span><br><span class="line">        	handle.call(ele)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        ele[<span class="string">'on'</span> + type] = handle;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解除事件</p>
+<p><code>dom.removeEventListener(&#39;click&#39;, fn, false);</code></p>
+<p><code>dom.detachEvent(&#39;on&#39; + type, fn);</code></p>
+</li>
+</ul>
+<h2 id="事件处理模型——事件冒泡、捕获"><a href="#事件处理模型——事件冒泡、捕获" class="headerlink" title="事件处理模型——事件冒泡、捕获"></a>事件处理模型——事件冒泡、捕获</h2><ul>
+<li><p>事件冒泡： </p>
+<p>结构上（非视觉上）嵌套关系的元素， 会存在事件冒泡的功能，即同一时间，自子元素冒泡向父元素（自底向上）</p>
+</li>
+<li><p>事件捕获：</p>
+<p>1 dom.addEventListener()第三个参数为true</p>
+<p>2 dom.setCapture(); （仅在IE上好使）捕获页面上所有的事件捕获到自己身上</p>
+<p>​    对应dom.releaseCapture(); （取消事件捕获）</p>
+<p>结构上（非视觉上）嵌套关系的元素， 会存在事件捕获的功能，即同一时间，自父元素捕获至子元素（自顶向下）</p>
+<p>IE没有捕获事件, 只有谷歌实现了</p>
+<p>出发顺序， 先捕获，后冒泡</p>
+<p><code>focus</code>、<code>blur</code>、<code>change</code>、<code>submit</code>、<code>reset</code>、<code>select</code>等事件不冒泡</p>
+</li>
+<li><p>阻止事件冒泡</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">div.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;<span class="comment">//在IE里(e)不好使</span></span><br><span class="line">	<span class="keyword">var</span> target = event.target || event.srcElement;<span class="comment">//兼容事件源对象</span></span><br><span class="line">	stopBubble(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(event.stopPropagation)&#123;</span><br><span class="line">		event.stopPropagation();</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>阻止默认事件</p>
+<p>默认事件——表单提交，啊标签跳转，右键菜单等</p>
+<p><code>return false</code> 以对象属性的方式注册的事件才生效（句柄绑定事件生效）</p>
+<p><code>event。preventDefault()</code>   W3C 标注， IE9以下不兼容</p>
+<p><code>event.returnValue = false</code> 兼容IE</p>
+<p>封装阻止默认事件的函数 <code>cancelHandler(event)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">	cancelHandler(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(event.preventDefault)&#123;</span><br><span class="line">		event.preventDefault();</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		event.returnValue = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件对象</p>
+<p>谷歌：<code>window.e || e</code></p>
+<p>IE：<code>window.event || event</code></p>
+</li>
+</ul>
+<p>  事件源对象</p>
+<p>  火狐只有<code>event.target</code></p>
+<p>  IE只有 <code>event.srcElement</code></p>
+<p>  google :都有</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 兼容性写法</span></span><br><span class="line"><span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line"><span class="keyword">var</span> target = event.target || event.srcElement;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>事件委托</p>
+<p>优点：</p>
+<p>1 性能 ： 不需要循环所有元素一个个绑定</p>
+<p>2 灵活 ： 当有新的子元素时不需要重新绑定事件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;$1&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span> * 100</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];</span></span><br><span class="line">    oUl.onclick = funciton (e) &#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> target = event.target || event.srcElement;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(target.innerText);</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>鼠标事件</p>
+<p>click、mousedown、mousemove、mouseup、contextmenu、mouseover、mouseout、mouseenter、mouseleave</p>
+<p>用button来区分鼠标按键 0 / 1 / 2</p>
+<p>W3C标准规定：click事件只能监听左键，，只能通过<code>mousedown</code>和<code>mouseup</code>来判断鼠标键</p>
+<p>div拖拽事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">dom</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> e = e || <span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> disX,</span><br><span class="line">        disY;</span><br><span class="line">    div.onmousedown = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        disX = e.pageX - <span class="built_in">parseInt</span>(dom.style.left);</span><br><span class="line">        disY = e.pageY - <span class="built_in">parseInt</span>(dom.style.top);</span><br><span class="line">        <span class="built_in">document</span>.onmousemove = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            dom.style.left = e.pageX - disX + <span class="string">'px'</span>;</span><br><span class="line">            dom.style.top = e.pageY - disY + <span class="string">'px'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        div.onmouseup = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">document</span>.onmousemove = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">drag(div)</span><br></pre></td></tr></table></figure>
+
+<p>判断鼠标左右键</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onmousedown = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (e.button == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'右键'</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'左键'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如何解决<code>onmousedown</code>和<code>onmouseup</code>与<code>onclick</code>事件冲突</p>
+<p>利用用户习惯的事件差设置就可以避免了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstTime = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> lastTime = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> key = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">document</span>.onmousedown = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    firstTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.onmouseup = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    lastTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    <span class="keyword">if</span> (lastTime - firstTime &lt; <span class="number">300</span>) &#123;</span><br><span class="line">        key = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (key) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'click'</span>);</span><br><span class="line">        key = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<p>  移动端：<code>touchstart</code> 、<code>touchmove</code>、<code>touchend</code></p>
+<ul>
+<li><p>键盘类事件</p>
+<p><code>onkeypress</code>  &gt;<code>onkeydown</code> &gt;  <code>onkeyup</code></p>
+<p>keydown可以相应任意键盘按键，keypress止咳响应字符类键盘按键</p>
+<p>keypress返回ASCLL码，可以转换成相应字符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onkeypress = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">String</span>.fromCharCode(e.charCode));</span><br><span class="line">    <span class="comment">// 将ASCLL码转换为键盘上对应的字符</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文本类操作事件</p>
+<p><code>input</code>输入触发、<code>focus</code>聚焦触发、<code>blur</code>失焦触发、<code>change</code>改变内容并且失焦触发</p>
+</li>
+<li><p>窗体操作类（window上的事件）</p>
+<p><code>scroll</code>当滚动轮滚动触发 （懒加载）</p>
+<p><code>load</code> （尽量少用）整个页面全部就绪的时候，才执行<code>window.onload</code>,虽然很飘逸，但是效率很低，影响用户体验，但是也有好处：比如广告要等到页面加载完才加上广告。也可以考究需要多久，页面能够正常使用</p>
+</li>
+</ul>
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="http://www.hsiliver.space/2019/07/08/事件/">http://www.hsiliver.space/2019/07/08/事件/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/web前端/">web前端</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/javascript/">javascript</a><a class="mdui-ripple article_tags-link" href="/tags/事件/">事件</a><a class="mdui-ripple article_tags-link" href="/tags/冒泡/">冒泡</a>
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.png" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/2019/07/08/JSON/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2019/07/08/获取视口属性，脚本化css/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjxv6s716000cpouygqlqib59"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/u/5123380761" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/z826526354" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/hsiliver/activities" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=826526354&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 hsiliver<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
