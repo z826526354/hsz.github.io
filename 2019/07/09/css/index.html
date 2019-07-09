@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>css2 | hsiliver个人博客</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="hsiliver个人博客">
+  <meta name="description" content="CSS层叠样式表(cascating style sheet)选择器选择器类型                权重 important                  infinity 行间样式                    1000 id                                100 class|属性|伪类       10 标签|伪元素">
+<meta name="keywords" content="css,css2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css2">
+<meta property="og:url" content="http://www.hsiliver.space/2019/07/09/css/index.html">
+<meta property="og:site_name" content="hsiliver个人博客">
+<meta property="og:description" content="CSS层叠样式表(cascating style sheet)选择器选择器类型                权重 important                  infinity 行间样式                    1000 id                                100 class|属性|伪类       10 标签|伪元素">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.hsiliver.space/2019/07/09/css/QQ%E6%88%AA%E5%9B%BE20181130173804.png">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/47b94a7f61d4e4c1c4fbfad5cdf1ed0c/xmlnote/31D1E5B90D284D0092C50933DD2A7A7E/491">
+<meta property="og:updated_time" content="2019-07-09T03:02:59.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css2">
+<meta name="twitter:description" content="CSS层叠样式表(cascating style sheet)选择器选择器类型                权重 important                  infinity 行间样式                    1000 id                                100 class|属性|伪类       10 标签|伪元素">
+<meta name="twitter:image" content="http://www.hsiliver.space/2019/07/09/css/QQ%E6%88%AA%E5%9B%BE20181130173804.png">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content="web前端 js基础 个人博客">
+  <meta name="keywords" content=",css,css2">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="hsiliver个人博客">
+  <meta name="msapplication-starturl" content="http://www.hsiliver.space/2019/07/09/css/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="hsiliver个人博客">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <meta property="article:published_time" content="Tue Jul 09 2019 12:10:58 GMT+0800">
+    <meta property="article:modified_time" content="Tue Jul 09 2019 11:02:59 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="http://www.hsiliver.space/2019/07/09/css/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">hsiliver个人博客</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/12456.jpg" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">hsiliver</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>桃李不言，下自成蹊</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:826526354@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '826526354@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="mdui-ripple sidebar_archives-count">29</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/web前端/">web前端<span class="mdui-ripple sidebar_archives-count">29</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/DOM的基本操作/">DOM的基本操作<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Date/">Date<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/HTML5/">HTML5<span class="mdui-ripple sidebar_archives-count">6</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/JSON/">JSON<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/VUE-router/">VUE-router<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/VUE-组件/">VUE-组件<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/VUE-js/">VUE.js<span class="mdui-ripple sidebar_archives-count">3</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/apply/">apply<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/arguments/">arguments<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/call/">call<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/canvas/">canvas<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/canvas绘制/">canvas绘制<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/css/">css<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/css2/">css2<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/es5严格模式/">es5严格模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/for循环/">for循环<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/html/">html<span class="mdui-ripple sidebar_archives-count">8</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/html5/">html5<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/if语句/">if语句<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/javascript/">javascript<span class="mdui-ripple sidebar_archives-count">15</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js时间线/">js时间线<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/js简介/">js简介<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/meta标签/">meta标签<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/svg/">svg<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/this/">this<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/try-catch-e/">try{}catch(e){}<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/video/">video<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/vue-cli/">vue-cli<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/三目运算符/">三目运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/事件/">事件<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/作用域链/">作用域链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/克隆/">克隆<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/冒泡/">冒泡<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/函数/">函数<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/包装类/">包装类<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型/">原型<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/原型链/">原型链<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/变量声明/">变量声明<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/圣杯模式/">圣杯模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/堆栈数据/">堆栈数据<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/定时器/">定时器<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象/">对象<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/对象枚举/">对象枚举<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/属性/">属性<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/异步加载/">异步加载<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/播放器/">播放器<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组/">数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/数组去重/">数组去重<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/标签/">标签<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/正则表达式/">正则表达式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/浏览器内核/">浏览器内核<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/混合app/">混合app<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/滚动条/">滚动条<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类型转换/">类型转换<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/类数组/">类数组<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/继承模式/">继承模式<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/脚本化css/">脚本化css<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/节点树/">节点树<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/视口/">视口<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/贝塞尔曲线/">贝塞尔曲线<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/运算符/">运算符<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/闭包/">闭包<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/预编译/">预编译<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">画廊</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://z826526354.github.io/myProject/myjob/demo.html" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">我的简历</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-8.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">css2</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-07-09 / <i class="iconfont">&#xe601;</i> hsiliver &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB5ElEQVR42u3aQXLDMAgFUN//0u0BWqcfZDexeFp1Oo6tpwUDguNri3VgYGBgYGBgYHwM44jXLy/68f+zJ8++tbIHDAyMaYw/QlvASD6fH0d0ZBgYGCMZyefPnj8LrFGSV9wDBgYGRs54nfwlVAwMDIz7GNWQuv5+DAwMjGrqlofO14H4bbU4BgbGAxn5pfx9f/9rfwMDA+NRjPKIQ1yUrrQBbp8ZwcDAeBSj2obs/TZn50UyBgbGHEahaCySqtdt5RE0DAyMMYzLxknj5mVyWM3UEAMDY2tGfpXfG55IwDkVAwNjGmPpRcUhsHxEo1nEYmBgbMrIRyJ67clq+Vp4JwYGxhhGHkZfb2vlEq3X7MTAwJjGyK/GripiqwkoBgYGRi9pq17P5VdslwVcDAyMLRjVkrWX5CVpZVLuYmBgYDQDX7GgrbZLywEXAwNja0YvmctHXXtbb86MYGBgDGDkpWm1eXBVawEDA2MOo7ryAN1LNxMeBgbGNMYRr3xzK1dp+XcxMDCmMXpBdqVwvaDBgIGBMZKRB8RkUKM3zLGUGmJgYGAsF65JO6EQ4jEwMDBajPU2Q35MGBgYMxm9sbA8RFabl81hCwwMjE0Zeci76vlqUwEDA2My47kLAwMDAwMDA+Ot6xuAGxHuAKvLLgAAAABJRU5ErkJggg==">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=css2&url=http://www.hsiliver.space/2019/07/09/css/&pic=http://www.hsiliver.space/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=css2&url=http://www.hsiliver.space/2019/07/09/css/&via=hsiliver" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.hsiliver.space/2019/07/09/css/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=http://www.hsiliver.space/2019/07/09/css/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.hsiliver.space/2019/07/09/css/&title=css2" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=hsiliver个人博客&title=css2&summary=web前端 js基础 个人博客&pics=http://www.hsiliver.space/images/favicon.png&url=http://www.hsiliver.space/2019/07/09/css/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=http://www.hsiliver.space/2019/07/09/css/&text=css2" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h2 id="CSS层叠样式表-cascating-style-sheet"><a href="#CSS层叠样式表-cascating-style-sheet" class="headerlink" title="CSS层叠样式表(cascating style sheet)"></a>CSS层叠样式表(cascating style sheet)</h2><h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p>选择器类型                权重</p>
+<p>important                  infinity</p>
+<p>行间样式                    1000</p>
+<p>id                                100</p>
+<p>class|属性|伪类       10</p>
+<p>标签|伪元素              1</p>
+<p>通配符                        0</p>
+<p>父子选择器            div span</p>
+<p>直接子元素选择器 div&gt;span</p>
+<p>并列选择器            div.demo</p>
+<p>分组选择器            div, span{}</p>
+<p><code>margin: 0 auto;</code>    自适应</p>
+<p><code>background-color:</code>背景颜色</p>
+<p><code>background-repeat: no repeat / repeat-x / repeat-y;</code></p>
+<p>背景重复            不重复    x方向重复    y方向重复</p>
+<p><code>background-size:</code>也可以是百分比</p>
+<table>
+<thead>
+<tr>
+<th>cover</th>
+<th>把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。背景图像的某些部分也许无法显示在背景定位区域中。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>contain</td>
+<td>把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。</td>
+</tr>
+</tbody></table>
+<p><code>background-position : x  y ;</code>——背景图片的定位</p>
+<p>x-x方向</p>
+<p>y-y方向</p>
+<ul>
+<li><p>border:外部框</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 三角形制作</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">35px</span> solid transparent;</span><br><span class="line">	<span class="attribute">border-left</span>: <span class="number">35px</span> solid </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p><img src="/2019/07/09/css/QQ%E6%88%AA%E5%9B%BE20181130173804.png" alt="img"></p>
+<p><code>outline:</code> 外部轮廓线</p>
+<p><code>font-size:</code> 文字高度（默认16px）</p>
+<p>1em = 1font-size</p>
+<p><code>line-height:</code> 单行文本高度</p>
+<p><code>text-indent: x em;</code> 缩进x文本的单位</p>
+<p><code>text-decoration: line-throng / none / underline / overline;</code></p>
+<p>中划线    无        下划线    上划线</p>
+<p><code>font-family: arial;</code>( 字体种类 )</p>
+<p><code>font-style: italic / oblique / normal;</code></p>
+<p>字体样式    斜体    倾斜        标准（前面两个差不多）</p>
+<p><code>text-align : center;</code> //文本居中</p>
+<p><code>vertical-align: middle;</code> //文本类对齐线</p>
+<p>一旦文本类或者文本类块级元素内有字了，设置了<code>vertical-align: middle;</code></p>
+<p>的文字就会相对那个元素内的字体对齐 </p>
+<p>单行文本高度 = 容器高度——普遍的居中方式 </p>
+<p><code>cursor: pointer;</code> // 鼠标在某元素上锁呈现的样式为小手</p>
+<p>小知识补充</p>
+<p>rgb（0， 0， 0）</p>
+<p>分别代表red， green， blue</p>
+<p>rgba（0， 0， 0， 0.5）</p>
+<p>分别代表red， green， blue， 透明度</p>
+<p>box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);</p>
+<p><img src="http://note.youdao.com/yws/public/resource/47b94a7f61d4e4c1c4fbfad5cdf1ed0c/xmlnote/31D1E5B90D284D0092C50933DD2A7A7E/491" alt="img"></p>
+<p>盒模型= margin + padding + border + element / content</p>
+<p>块级元素 : div p ul li ol form（独占一行，可以通过css改变宽高）</p>
+<p>行级元素 : span strong em a del（内容决定元素所占位置，不可通过css改变宽高）</p>
+<p>行级块元素 : img（两者优点的结合）</p>
+<p>padding :  上         右        下      左；</p>
+<p>  :  上        左右      下</p>
+<p>  :  上下     左右 </p>
+<p>left / top / right / bottom / z-index——只适用于有定位的元素</p>
+<p>position:absolute / relative / fixed;</p>
+<p>定位         </p>
+<p>absolute——脱离原来位置相对于有定位的父级定位，没有则相对于窗口定位</p>
+<p>relative——相对于自身初始位置定位</p>
+<p>fixed—— 相对于窗口定位</p>
+<p>编程思想——先写html / 先写css</p>
+<h5 id="行级元素只能嵌套行级元素，块级元素可以嵌套任何元素"><a href="#行级元素只能嵌套行级元素，块级元素可以嵌套任何元素" class="headerlink" title="行级元素只能嵌套行级元素，块级元素可以嵌套任何元素"></a>行级元素只能嵌套行级元素，块级元素可以嵌套任何元素</h5><h5 id="关于margin塌陷问题"><a href="#关于margin塌陷问题" class="headerlink" title="关于margin塌陷问题"></a>关于margin塌陷问题</h5><p>垂直之间塌陷的原则是以两盒子最大的外边距为准</p>
+<p>解决办法: 触发盒子的bfc</p>
+<ol>
+<li><p>position: absolute;</p>
+</li>
+<li><p>display: inline-block;</p>
+</li>
+<li><p>float: left / right;</p>
+</li>
+<li><p>overflow: hidden;</p>
+</li>
+</ol>
+<p>(原理: 改变渲染规则)</p>
+<p>关于浮动流: 文本以及文本类块级元素可以看到浮动流</p>
+<p>清除浮动 : 利用伪元素、</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">""</span>;<span class="comment">/*——让伪元素生效*/</span></span><br><span class="line">	<span class="attribute">clear</span>: both;<span class="comment">/*——清除浮动*/</span></span><br><span class="line">	<span class="attribute">display</span>: block;<span class="comment">/*——让clear生效*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>凡是设置了position和float，元素会自动变成inline-block</p>
+<p>伪元素:</p>
+<p><code>::after</code></p>
+<p><code>::before</code></p>
+<ul>
+<li>单行文本溢出打点:</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">   	<span class="attribute">white-space</span>: nowrap;</span><br><span class="line">	overflow-hidden;</span><br><span class="line">	<span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>淘宝logo制作方法</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">padding-top</span>: <span class="number">90px</span>;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>标准盒模型变IE盒模型</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="描述一下盒模型"><a href="#描述一下盒模型" class="headerlink" title="描述一下盒模型"></a>描述一下盒模型</h4><p>margin：设置一个元素所有外边距的宽度</p>
+<p>border： 围绕元素内容和内边距的一条或多条线</p>
+<p>padding： 属性定义元素的内边距。padding 属性接受长度值或百分比值，但不允许使用负值</p>
+<p>content：内容区</p>
+<p><strong>W3C 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。</strong></p>
+<p><strong>IE 盒子模型的 content 部分包含了 border 和 pading</strong></p>
+<h3 id="简述display常用的的属性"><a href="#简述display常用的的属性" class="headerlink" title="简述display常用的的属性"></a>简述display常用的的属性</h3><table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">none</td>
+<td>此元素不会被显示。</td>
+</tr>
+<tr>
+<td align="left">block</td>
+<td>此元素将显示为块级元素，此元素前后会带有换行符。</td>
+</tr>
+<tr>
+<td align="left">inline</td>
+<td>默认。此元素会被显示为内联元素，元素前后没有换行符。</td>
+</tr>
+<tr>
+<td align="left">inline-block</td>
+<td>行内块元素。（CSS2.1 新增的值）</td>
+</tr>
+<tr>
+<td align="left">list-item</td>
+<td>此元素会作为列表显示。</td>
+</tr>
+<tr>
+<td align="left">run-in</td>
+<td>此元素会根据上下文作为块级元素或内联元素显示。</td>
+</tr>
+<tr>
+<td align="left">flex</td>
+<td>此元素将作为css3弹性盒模型</td>
+</tr>
+</tbody></table>
+<h3 id="CSS3可用的伪类有哪些？"><a href="#CSS3可用的伪类有哪些？" class="headerlink" title="CSS3可用的伪类有哪些？"></a>CSS3可用的伪类有哪些？</h3><ol>
+<li><p><strong>:first-child</strong>选择某个元素的第一个子元素；</p>
+</li>
+<li><p><strong>:last-child</strong>选择某个元素的最后一个子元素；</p>
+</li>
+<li><p><strong>:nth-child()</strong>选择某个元素的一个或多个特定的子元素；</p>
+</li>
+<li><p><strong>:nth-last-child()</strong>选择某个元素的一个或多个特定的子元素，从这个元素的最后一个子元素开始算；</p>
+</li>
+<li><p><strong>:nth-of-type()</strong>选择指定的元素；</p>
+</li>
+<li><p><strong>:nth-last-of-type()</strong>选择指定的元素，从元素的最后一个开始计算；</p>
+</li>
+<li><p><strong>:first-of-type</strong>选择一个上级元素下的第一个同类子元素；</p>
+</li>
+<li><p><strong>:last-of-type</strong>选择一个上级元素的最后一个同类子元素；</p>
+</li>
+<li><p><strong>:only-child</strong>选择的元素是它的父元素的唯一一个了元素；</p>
+</li>
+<li><p><strong>:only-of-type</strong>选择一个元素是它的上级元素的唯一一个相同类型的子元素；</p>
+</li>
+<li><p><strong>:empty</strong>选择的元素里面没有任何内容。</p>
+</li>
+</ol>
+<h3 id="position有哪些值，-有什么区别？"><a href="#position有哪些值，-有什么区别？" class="headerlink" title="position有哪些值， 有什么区别？"></a>position有哪些值， 有什么区别？</h3><table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">absolute</td>
+<td align="left">生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。</td>
+</tr>
+<tr>
+<td align="left">fixed</td>
+<td align="left">生成绝对定位的元素，相对于浏览器窗口进行定位。</td>
+</tr>
+<tr>
+<td align="left">relative</td>
+<td align="left">生成相对定位的元素，相对于其正常位置进行定位。</td>
+</tr>
+<tr>
+<td align="left">static</td>
+<td align="left">默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。</td>
+</tr>
+<tr>
+<td align="left">inherit</td>
+<td align="left">规定应该从父元素继承 position 属性的值。</td>
+</tr>
+</tbody></table>
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="http://www.hsiliver.space/2019/07/09/css/">http://www.hsiliver.space/2019/07/09/css/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/web前端/">web前端</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/css/">css</a><a class="mdui-ripple article_tags-link" href="/tags/css2/">css2</a>
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.png" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2019/07/09/meta/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjxv8os3600070guymaasia0s"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/u/5123380761" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/z826526354" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/hsiliver/activities" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=826526354&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 hsiliver<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
